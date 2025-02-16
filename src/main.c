@@ -19,15 +19,18 @@ int main(void) {
 	Shader shader = LoadShader(0, "shaders/template.fs");
 	if (shader.id == 0) {printf("shader failed to load!\n"); return 1;}
 	
-	int uTimeLoc = GetShaderLocation(shader, "uTime");
-	int uMouseLoc = GetShaderLocation(shader, "uMouse");
+	int uTimeLoc = GetShaderLocation(shader, "uTime"); // not currently used
+	int uMouseLoc = GetShaderLocation(shader, "uMouse"); // not currently used
 	int uResolutionLoc = GetShaderLocation(shader, "uResolution");
 
 	if (uTimeLoc == -1 || uResolutionLoc == -1) {printf("unable to find shader uniforms!\n");return 1;}
-
+	// i guess these fail if you don't use them in the shader
+	// let raylib handle this issue itself for the time being
+	// if (uTimeLoc == -1 || uResolutionLoc == -1 || uMouseLoc == -1) {printf("unable to find shader uniforms!\n");return 1;}
+	// TODO: need to work on figuring out the resolution, its relation to the window, and its mapping to the rectangle
 	float time = 0.0f;
-	Rectangle rect = {25, 25, 750, 750};
-	Vector2 resolution = {WINDOW_W, WINDOW_H};
+	Rectangle rect = {0, 0, WINDOW_W, WINDOW_H};
+	Vector2 resolution = {1600.0f, 1600.0f};
 
 	SetShaderValue(shader, uTimeLoc, &time, SHADER_UNIFORM_FLOAT);
 	SetShaderValue(shader, uResolutionLoc, &resolution, SHADER_UNIFORM_VEC2);
