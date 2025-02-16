@@ -20,7 +20,9 @@ int main(void) {
 	if (shader.id == 0) {printf("shader failed to load!\n"); return 1;}
 	
 	int uTimeLoc = GetShaderLocation(shader, "uTime");
+	int uMouseLoc = GetShaderLocation(shader, "uMouse");
 	int uResolutionLoc = GetShaderLocation(shader, "uResolution");
+
 	if (uTimeLoc == -1 || uResolutionLoc == -1) {printf("unable to find shader uniforms!\n");return 1;}
 
 	float time = 0.0f;

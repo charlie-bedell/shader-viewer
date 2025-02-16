@@ -1,6 +1,7 @@
 #version 330 core
 
 uniform float uTime;
+uniform vec2 uMouse;
 uniform vec2 uResolution;
 
 out vec4 FragColor;
